@@ -1,0 +1,3 @@
+rootProject.name='Watermark'
+include ':app'
+include ':lib_watermark'
