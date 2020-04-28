@@ -56,10 +56,10 @@ abstract class AbsWatermark<P : Paint> {
         return this
     }
 
-    fun getPaddingStart(): Int = padding[0]
-    fun getPaddingTop(): Int = padding[1]
-    fun getPaddingEnd(): Int = padding[2]
-    fun getPaddingBottom(): Int = padding[3]
+    fun getPaddingStart(): Int = dip2Pixel(padding[0].toFloat()).toInt()
+    fun getPaddingTop(): Int = dip2Pixel(padding[1].toFloat()).toInt()
+    fun getPaddingEnd(): Int = dip2Pixel(padding[2].toFloat()).toInt()
+    fun getPaddingBottom(): Int = dip2Pixel(padding[3].toFloat()).toInt()
 
     fun getGravity() = gravity
 

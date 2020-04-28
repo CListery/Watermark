@@ -152,19 +152,6 @@ open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>()
 
             val canvas = Canvas(textWatermarkBitmap)
             canvas.drawColor(backgroundColor)
-
-            val testPaint = Paint()
-            testPaint.color = Color.RED
-            testPaint.strokeWidth = 1F
-            testPaint.style = Paint.Style.STROKE
-            testPaint.pathEffect = DashPathEffect(floatArrayOf(dip2Pixel(6F), dip2Pixel(6F)), 0F)
-            canvas.drawRect(
-                0F + 1,
-                0F + 1,
-                boundWidth.toFloat() - 1,
-                totalHeight.toFloat() - 1,
-                testPaint
-            )
             staticLayout.draw(canvas)
 
             return textWatermarkBitmap
