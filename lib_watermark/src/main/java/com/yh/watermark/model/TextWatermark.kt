@@ -1,6 +1,9 @@
 package com.yh.watermark.model
 
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.os.Build
 import android.text.Layout
 import android.text.StaticLayout
@@ -10,7 +13,6 @@ import androidx.annotation.ColorInt
 import androidx.annotation.FontRes
 import androidx.core.content.res.ResourcesCompat
 import com.yh.watermark.WatermarkMgr
-import kotlin.math.max
 import kotlin.math.min
 
 /**
@@ -89,30 +91,19 @@ open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>()
 
     override fun setupPaintStyle(paint: TextPaint, width: Int, height: Int) {
         super.setupPaintStyle(paint, width, height)
-        var textSize = min(width, height).toFloat()
-        while (textSize > 100) {
-            textSize /= 10
-        }
-        textSize = max(textSize, maxTextSize)
-        val textSizePixel = dip2Pixel(textSize)
+        val textSizePixel = dp2pxByDst(maxTextSize, width, height)
+        Log.w(TAG, "setupPaintStyle: $textSizePixel")
         paint.textSize = textSizePixel
     }
 
     override fun make(paint: TextPaint, width: Int, height: Int): Bitmap? {
-        val bounds = Rect()
-        paint.getTextBounds(text, 0, text.length, bounds)
-
-        Log.w(TAG, "make: bounds- $bounds")
-
-        var boundWidth = bounds.width()
         val textMaxWidth =
-            if (maxW <= 0) min(paint.measureText(text).toInt(), width) else maxW
-        Log.w(TAG, "make: $textMaxWidth - $boundWidth")
-        if (boundWidth > textMaxWidth) {
-            boundWidth = textMaxWidth
-        }
-
-        if (boundWidth <= 0) {
+            if (maxW <= 0)
+                min(paint.measureText(text).toInt(), width)
+            else
+                maxW
+        Log.w(TAG, "make: $textMaxWidth")
+        if (textMaxWidth <= 0) {
             return null
         }
 
@@ -146,9 +137,9 @@ open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>()
         val distance = fontMetrics.bottom - fontMetrics.top
         val totalHeight = (distance * staticLayout.spacingMultiplier * lineCount).toInt()
 
-        if (boundWidth > 0 && totalHeight > 0) {
+        if (textMaxWidth > 0 && totalHeight > 0) {
             val textWatermarkBitmap =
-                Bitmap.createBitmap(boundWidth, totalHeight, Bitmap.Config.ARGB_8888)
+                Bitmap.createBitmap(textMaxWidth, totalHeight, Bitmap.Config.ARGB_8888)
 
             val canvas = Canvas(textWatermarkBitmap)
             canvas.drawColor(backgroundColor)

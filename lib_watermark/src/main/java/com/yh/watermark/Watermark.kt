@@ -10,7 +10,10 @@ import android.util.Log
 import android.view.Gravity
 import androidx.annotation.FloatRange
 import com.yh.watermark.model.AbsWatermark
-import com.yh.watermark.utils.FileUtils
+import java.io.BufferedInputStream
+import java.io.File
+import java.io.FileInputStream
+import java.io.InputStream
 
 /**
  * Created by CYH on 2020/4/26 18:05
@@ -23,6 +26,11 @@ class Watermark {
         @JvmStatic
         fun create(sourcePath: String): Watermark {
             return Watermark(sourcePath)
+        }
+
+        @JvmStatic
+        fun create(uri: Uri): Watermark {
+            return Watermark(uri)
         }
     }
 
@@ -63,13 +71,6 @@ class Watermark {
         if (TextUtils.isEmpty(mSourcePath) && null == mSourceUri) {
             return null
         }
-        var sourcePath = mSourcePath
-        if (null == sourcePath) {
-            sourcePath = FileUtils.getPath(WatermarkMgr.get().ctx(), mSourceUri)
-        }
-        if (TextUtils.isEmpty(sourcePath)) {
-            return null
-        }
 
         val watermarks = mWatermarks.filterNotNull()
         if (watermarks.isEmpty()) {
@@ -79,7 +80,9 @@ class Watermark {
         val originOption = BitmapFactory.Options()
         originOption.inJustDecodeBounds = true
 
-        BitmapFactory.decodeFile(sourcePath, originOption)
+        getSourceInputStream()?.use {
+            BitmapFactory.decodeStream(it, null, originOption)
+        }
 
         val originW = originOption.outWidth
         val originH = originOption.outHeight
@@ -92,13 +95,33 @@ class Watermark {
 
         val watermarkCanvas = Canvas(newBitmap)
 
-        drawBackground(outW, outH, originW, watermarkCanvas, sourcePath)
+        drawBackground(outW, outH, originW, watermarkCanvas)
 
         watermarks.forEach { watermark ->
             drawWatermark(watermarkCanvas, watermark, outW, outH)
         }
 
         return newBitmap
+    }
+
+    private fun getSourceInputStream(): InputStream? {
+        val sourcePath = mSourcePath
+        val sourceUri = mSourceUri
+        val sourceInputStream: InputStream? = when {
+            null != sourcePath -> {
+                FileInputStream(File(sourcePath))
+            }
+            null != sourceUri -> {
+                WatermarkMgr.get().ctx().contentResolver.openInputStream(sourceUri)
+            }
+            else -> {
+                null
+            }
+        }
+        if (null != sourceInputStream) {
+            return BufferedInputStream(sourceInputStream)
+        }
+        return null
     }
 
     private fun drawWatermark(
@@ -162,8 +185,7 @@ class Watermark {
         outW: Int,
         outH: Int,
         originW: Int,
-        watermarkCanvas: Canvas,
-        sourcePath: String?
+        watermarkCanvas: Canvas
     ) {
         val newOption = BitmapFactory.Options()
         newOption.inJustDecodeBounds = false
@@ -172,12 +194,16 @@ class Watermark {
         newOption.outHeight = outH
         newOption.inSampleSize = originW / outW
         Log.d(TAG, "drawBackground: ${newOption.inSampleSize}")
-        watermarkCanvas.drawBitmap(
-            BitmapFactory.decodeFile(sourcePath, newOption),
-            0F,
-            0F,
-            null
-        )
+
+        getSourceInputStream()?.use {
+            val bm = BitmapFactory.decodeStream(it, null, newOption) ?: return
+            watermarkCanvas.drawBitmap(
+                bm,
+                0F,
+                0F,
+                null
+            )
+        }
     }
 
 }

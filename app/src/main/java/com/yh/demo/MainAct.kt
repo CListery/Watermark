@@ -23,13 +23,10 @@ import com.yh.watermark.utils.FileUtils
 import kotlinx.android.synthetic.main.act_main.*
 import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.RuntimePermissions
-import java.io.BufferedOutputStream
 import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.concurrent.thread
 
 /**
  * Created by CYH on 2020/4/26 09:24
@@ -63,25 +60,25 @@ class MainAct : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val watermarkBitmap = Watermark.create(mCurrentPhotoPath)
-                .setOutConfigure(0.5F, Bitmap.Config.RGB_565)
+            val watermarkBitmap = Watermark.create(capturedUri!!)
+                .setOutConfigure(0.5F, Bitmap.Config.ARGB_8888)
                 .loadWatermark(
                     FullTextWatermark("尊园地产&房星科技")
                         .setLineSpace(4)
-                        .setMax(maxTextSize = 50F)
+                        .setMax(maxTextSize = 30F)
                         .setTextStyle(Color.WHITE, Paint.Style.FILL, R.font.medium3270)
                         .setAlpha((0xFF * 0.2).toInt())
                         .setRotationAngle(-45F)
                     ,
                     TextWatermark("xxx部门 2020-4-22 15:15:32")
-                        .setMax(maxTextSize = 30F)
+                        .setMax(maxTextSize = 20F)
                         .setTextStyle(Color.WHITE, Paint.Style.FILL, R.font.medium3270)
                         .setTextShadow(4F, 2F, 2F, Color.DKGRAY)
                         .setPadding(5, 5, 5, 5)
                         .setGravity(Gravity.TOP or Gravity.START)
                         .setAlpha((0xFF * 0.65).toInt())
                     , TextWatermark("张麻子(15323)")
-                        .setMax(maxTextSize = 30F)
+                        .setMax(maxTextSize = 20F)
                         .setTextStyle(Color.WHITE, Paint.Style.FILL, R.font.medium3270)
                         .setTextShadow(4F, 2F, 2F, Color.DKGRAY)
                         .setPadding(5, 5, 5, 5)

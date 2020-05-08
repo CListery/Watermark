@@ -3,11 +3,13 @@ package com.yh.watermark.model
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Paint
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import androidx.annotation.ColorInt
 import androidx.annotation.IntRange
 import com.yh.watermark.WatermarkMgr
+import kotlin.math.hypot
 
 /**
  * Created by CYH on 2020/4/26 18:04
@@ -69,6 +71,13 @@ abstract class AbsWatermark<P : Paint> {
             dip,
             WatermarkMgr.get().ctx().resources.displayMetrics
         )
+    }
+
+    protected fun dp2pxByDst(dp: Float, w: Int, h: Int): Float {
+        val displayMetrics = WatermarkMgr.get().ctx().resources.displayMetrics
+        val hypot = hypot(displayMetrics.widthPixels.toDouble(), displayMetrics.heightPixels.toDouble()).toFloat()
+        val bmHypot = hypot(w.toDouble(), h.toDouble()).toFloat()
+        return bmHypot / hypot * dip2Pixel(dp)
     }
 
     fun createWatermarkBitmap(width: Int, height: Int): Bitmap? {
