@@ -1,3 +1,5 @@
+apply from: "${project.rootDir}/common.gradle"
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'

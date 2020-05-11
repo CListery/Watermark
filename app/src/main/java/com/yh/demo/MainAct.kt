@@ -90,64 +90,6 @@ class MainAct : AppCompatActivity() {
                 img.setImageBitmap(watermarkBitmap)
             }
 
-//            val originOption = BitmapFactory.Options()
-//            originOption.inJustDecodeBounds = true
-//            BitmapFactory.decodeFile(mCurrentPhotoPath, originOption)
-//            val originW = originOption.outWidth
-//            val originH = originOption.outHeight
-//
-//            val outW = originW / 2
-//            val outH = originH / 2
-//            val newConfig = Bitmap.Config.RGB_565
-//            Log.w(LOG_TAG, "[w:$outW * h:$outH]")
-//
-//            val watermarkBitmap = Bitmap.createBitmap(outW, outH, newConfig)
-//            val watermarkCanvas = Canvas(watermarkBitmap)
-//
-//            val newOption = BitmapFactory.Options()
-//            newOption.inJustDecodeBounds = false
-//            newOption.inPreferredConfig = Bitmap.Config.RGB_565
-//            newOption.outWidth = outW
-//            newOption.outHeight = outH
-//            newOption.inSampleSize = originW / outW
-//            Log.d(LOG_TAG, "inSampleSize: ${newOption.inSampleSize}")
-//            watermarkCanvas.drawBitmap(
-//                BitmapFactory.decodeFile(mCurrentPhotoPath, newOption),
-//                0F,
-//                0F,
-//                null
-//            )
-//
-//            val watermarkPaint = Paint()
-//
-//            val watermarkText = WatermarkText()
-//            watermarkText.text = "xxx部门 2020-4-22 15:15:32 张麻子(15323) 张麻子(15323) 张麻子(15323) 张麻子(15323) 张麻子(15323)"
-//            watermarkText.maxW = outW
-//            watermarkText.maxTextSize = 30F
-//            watermarkText.textAlpha = (0xFF * 0.65).toInt()
-//            watermarkText.textColor = Color.WHITE
-//            watermarkText.textFount = R.font.medium3270
-//            watermarkText.textShadowBlurRadius = 1F
-//            watermarkText.textShadowXOffset = 2F
-//            watermarkText.textShadowYOffset = 2F
-//            watermarkText.textShadowColor = Color.DKGRAY
-//            val scaledWMBitmap = watermarkText.convert2Bitmap(outW, outH)
-////            scaledWMBitmap = adjustPhotoRotation(
-////                scaledWMBitmap,
-////                watermarkText.position
-////            )
-//            if (null != scaledWMBitmap) {
-//                watermarkCanvas.drawBitmap(
-//                    scaledWMBitmap,
-//                    watermarkText.position.positionX * outW,
-//                    watermarkText.position.positionY * outH,
-//                    watermarkPaint
-//                )
-//            }
-//
-//            img.setImageBitmap(watermarkBitmap)
-//            Log.w(LOG_TAG, "watermarkBitmap: $watermarkBitmap")
-
 //            if (null != watermarkBitmap) {
 //                thread {
 //                    val outPath = createMediaFile()
