@@ -5,7 +5,8 @@ import android.graphics.Canvas
 import android.graphics.PointF
 import android.graphics.Rect
 import android.text.TextPaint
-import android.util.Log
+import com.yh.appinject.logger.ext.libW
+import com.yh.watermark.WatermarkMgr
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -14,10 +15,6 @@ import kotlin.math.sqrt
  * Created by CYH on 2020/4/27 10:29
  */
 class FullTextWatermark(text: String) : TextWatermark(text) {
-
-    companion object {
-        private const val TAG = "FullTextWatermark"
-    }
 
     private var lineCount: Int = 3
 
@@ -29,7 +26,7 @@ class FullTextWatermark(text: String) : TextWatermark(text) {
     override fun make(paint: TextPaint, width: Int, height: Int): Bitmap? {
         val bounds = Rect()
         paint.getTextBounds(text, 0, text.length, bounds)
-        Log.w(TAG, "make: bounds- $bounds")
+        WatermarkMgr.get().libW("make: bounds- $bounds")
 
         var boundWidth = bounds.width()
         if (boundWidth <= 0) {
@@ -49,7 +46,7 @@ class FullTextWatermark(text: String) : TextWatermark(text) {
         }
 
         val textWatermarkBitmap = Bitmap.createBitmap(newWidth, height, Bitmap.Config.ARGB_8888)
-        Log.w(TAG, "make: [${textWatermarkBitmap.width} * ${textWatermarkBitmap.height}]")
+        WatermarkMgr.get().libW( "make: [${textWatermarkBitmap.width} * ${textWatermarkBitmap.height}]")
         val canvas = Canvas(textWatermarkBitmap)
         canvas.drawColor(backgroundColor)
 

@@ -12,10 +12,11 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.text.TextUtils
-import android.util.Log
 import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.yh.appinject.logger.logD
+import com.yh.appinject.logger.logE
 import com.yh.watermark.Watermark
 import com.yh.watermark.model.FullTextWatermark
 import com.yh.watermark.model.TextWatermark
@@ -35,8 +36,6 @@ import java.util.*
 class MainAct : AppCompatActivity() {
 
     companion object {
-        private const val LOG_TAG = "MainAct"
-
         const val FILE_PROVIDER_AUTHORITY = ".provider"
 
         private const val REQUEST_TAKE_CAMERA_PHOTO = 0x123
@@ -125,8 +124,7 @@ class MainAct : AppCompatActivity() {
                 photoFile = createMediaFile()
             } catch (ex: IOException) {
                 // Error occurred while creating the File
-                Log.d(LOG_TAG, "Error occurred while creating the file")
-
+                logE("Error occurred while creating the file", throwable = ex)
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {
@@ -138,7 +136,7 @@ class MainAct : AppCompatActivity() {
                     photoFile
                 )
 
-                Log.d(LOG_TAG, "takePic: $capturedUri")
+                logD("takePic: $capturedUri")
 
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, capturedUri)
 
@@ -158,7 +156,7 @@ class MainAct : AppCompatActivity() {
             storageDir.mkdirs()
         }
         val file = File.createTempFile(fileName, ".jpg", storageDir)
-        Log.d(LOG_TAG, "createMediaFile: $file")
+        logD("createMediaFile: $file")
         return file
     }
 
@@ -184,8 +182,7 @@ class MainAct : AppCompatActivity() {
         capturedUri = uri
         mCurrentPhotoPath = FileUtils.getPath(applicationContext, uri)
         img.setImageURI(uri)
-        Log.d(LOG_TAG, "displayImg: $capturedUri")
-        Log.d(LOG_TAG, "displayImg: $mCurrentPhotoPath")
+        logD("displayImg:\n$capturedUri\n$mCurrentPhotoPath")
     }
 
     override fun onRequestPermissionsResult(

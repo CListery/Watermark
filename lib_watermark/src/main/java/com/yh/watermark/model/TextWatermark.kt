@@ -8,10 +8,10 @@ import android.os.Build
 import android.text.Layout
 import android.text.StaticLayout
 import android.text.TextPaint
-import android.util.Log
 import androidx.annotation.ColorInt
 import androidx.annotation.FontRes
 import androidx.core.content.res.ResourcesCompat
+import com.yh.appinject.logger.ext.libW
 import com.yh.watermark.WatermarkMgr
 import kotlin.math.min
 
@@ -19,10 +19,6 @@ import kotlin.math.min
  * Created by CYH on 2020/4/26 13:50
  */
 open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>() {
-
-    companion object {
-        private const val TAG = "TextWatermark"
-    }
 
     private var maxW: Int = -1
     private var maxTextSize: Float = 20F
@@ -92,7 +88,7 @@ open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>()
     override fun setupPaintStyle(paint: TextPaint, width: Int, height: Int) {
         super.setupPaintStyle(paint, width, height)
         val textSizePixel = dp2pxByDst(maxTextSize, width, height)
-        Log.w(TAG, "setupPaintStyle: $textSizePixel")
+        WatermarkMgr.get().libW("setupPaintStyle: $textSizePixel")
         paint.textSize = textSizePixel
     }
 
@@ -102,7 +98,7 @@ open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>()
                 min(paint.measureText(text).toInt(), width)
             else
                 maxW
-        Log.w(TAG, "make: $textMaxWidth")
+        WatermarkMgr.get().libW("make: $textMaxWidth")
         if (textMaxWidth <= 0) {
             return null
         }
@@ -128,7 +124,7 @@ open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>()
         }
 
         val lineCount = staticLayout.lineCount
-        Log.w(TAG, "text2Bitmap: lineCount- $lineCount")
+        WatermarkMgr.get().libW("text2Bitmap: lineCount- $lineCount")
         if (lineCount <= 0) {
             return null
         }

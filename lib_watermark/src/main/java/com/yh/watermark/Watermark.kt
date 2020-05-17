@@ -6,9 +6,9 @@ import android.graphics.Canvas
 import android.graphics.Rect
 import android.net.Uri
 import android.text.TextUtils
-import android.util.Log
 import android.view.Gravity
 import androidx.annotation.FloatRange
+import com.yh.appinject.logger.ext.libW
 import com.yh.watermark.model.AbsWatermark
 import java.io.BufferedInputStream
 import java.io.File
@@ -21,8 +21,6 @@ import java.io.InputStream
 class Watermark {
 
     companion object {
-        private const val TAG = "Watermark"
-
         @JvmStatic
         fun create(sourcePath: String): Watermark {
             return Watermark(sourcePath)
@@ -89,7 +87,7 @@ class Watermark {
 
         val outW = (originW * outRatio).toInt()
         val outH = (originH * outRatio).toInt()
-        Log.w(TAG, "getWatermarkBitmap: [w:$outW * h:$outH]")
+        WatermarkMgr.get().libW("getWatermarkBitmap: [w:$outW * h:$outH]")
 
         val newBitmap = Bitmap.createBitmap(outW, outH, outColorChannel)
 
@@ -193,7 +191,7 @@ class Watermark {
         newOption.outWidth = outW
         newOption.outHeight = outH
         newOption.inSampleSize = originW / outW
-        Log.d(TAG, "drawBackground: ${newOption.inSampleSize}")
+        WatermarkMgr.get().libW("drawBackground: ${newOption.inSampleSize}")
 
         getSourceInputStream()?.use {
             val bm = BitmapFactory.decodeStream(it, null, newOption) ?: return

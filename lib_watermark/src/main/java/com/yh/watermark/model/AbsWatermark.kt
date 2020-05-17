@@ -3,7 +3,6 @@ package com.yh.watermark.model
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Paint
-import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import androidx.annotation.ColorInt

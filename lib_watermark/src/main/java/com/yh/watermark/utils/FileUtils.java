@@ -29,8 +29,10 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.webkit.MimeTypeMap;
+
+import com.yh.appinject.logger.Logs;
+import com.yh.watermark.WatermarkMgr;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -41,12 +43,6 @@ import java.util.Comparator;
 public class FileUtils {
     private FileUtils() {
     } //private constructor to enforce Singleton pattern
-
-    /**
-     * TAG for log messages.
-     */
-    static final String TAG = "FileUtils";
-    private static final boolean DEBUG = false; // Set to true to enable logging
 
     public static final String MIME_TYPE_AUDIO = "audio/*";
     public static final String MIME_TYPE_TEXT = "text/*";
@@ -203,8 +199,7 @@ public class FileUtils {
             cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
                     null);
             if (cursor != null && cursor.moveToFirst()) {
-                if (DEBUG)
-                    DatabaseUtils.dumpCursor(cursor);
+                Logs.logCursor(cursor, false, null, WatermarkMgr.get());
 
                 final int column_index = cursor.getColumnIndexOrThrow(column);
                 return cursor.getString(column_index);
@@ -230,17 +225,13 @@ public class FileUtils {
      * @see #isLocal(String)
      */
     public static String getPath(final Context context, final Uri uri) {
-
-        if (DEBUG)
-            Log.d(TAG + " File -",
-                    "Authority: " + uri.getAuthority() +
-                            ", Fragment: " + uri.getFragment() +
-                            ", Port: " + uri.getPort() +
-                            ", Query: " + uri.getQuery() +
-                            ", Scheme: " + uri.getScheme() +
-                            ", Host: " + uri.getHost() +
-                            ", Segments: " + uri.getPathSegments().toString()
-            );
+        Logs.logD("Authority: " + uri.getAuthority() +
+                ", Fragment: " + uri.getFragment() +
+                ", Port: " + uri.getPort() +
+                ", Query: " + uri.getQuery() +
+                ", Scheme: " + uri.getScheme() +
+                ", Host: " + uri.getHost() +
+                ", Segments: " + uri.getPathSegments().toString(), null, WatermarkMgr.get());
 
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 
@@ -382,11 +373,10 @@ public class FileUtils {
      * @author paulburke
      */
     public static Bitmap getThumbnail(Context context, Uri uri, String mimeType) {
-        if (DEBUG)
-            Log.d(TAG, "Attempting to get thumbnail");
+        Logs.logD("Attempting to get thumbnail", null, WatermarkMgr.get());
 
         if (!isMediaUri(uri)) {
-            Log.e(TAG, "You can only retrieve thumbnails for images and videos.");
+            Logs.logE("You can only retrieve thumbnails for images and videos.", null, WatermarkMgr.get());
             return null;
         }
 
@@ -398,8 +388,7 @@ public class FileUtils {
                 cursor = resolver.query(uri, null, null, null, null);
                 if (cursor.moveToFirst()) {
                     final int id = cursor.getInt(0);
-                    if (DEBUG)
-                        Log.d(TAG, "Got thumb ID: " + id);
+                    Logs.logD("Got thumb ID: " + id, null, WatermarkMgr.get());
 
                     if (mimeType.contains("video")) {
                         bm = MediaStore.Video.Thumbnails.getThumbnail(
@@ -416,8 +405,7 @@ public class FileUtils {
                     }
                 }
             } catch (Exception e) {
-                if (DEBUG)
-                    Log.e(TAG, "getThumbnail", e);
+                Logs.logE("getThumbnail", null, WatermarkMgr.get(), e);
             } finally {
                 if (cursor != null)
                     cursor.close();

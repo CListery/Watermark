@@ -3,6 +3,8 @@ package com.yh.demo
 import android.app.Application
 import android.util.Log
 import com.yh.appinject.IBaseAppInject
+import com.yh.appinject.logger.LogsManager
+import com.yh.appinject.logger.logW
 import com.yh.watermark.WatermarkMgr
 
 /**
@@ -18,13 +20,18 @@ class App : Application(), IBaseAppInject {
     }
 
     override fun showTipMsg(errorMsg: String) {
-        Log.w("App", "showTip: $errorMsg")
+        logW("showTip: $errorMsg")
     }
 
     override fun onCreate() {
         super.onCreate()
 
-        WatermarkMgr.get().register(this)
+        LogsManager.get().setDefLoggerConfig(false to 0, true to 0)
+
+        WatermarkMgr.get().apply {
+            loggerConfig(true to Log.VERBOSE)
+            register(this@App)
+        }
 
     }
 
