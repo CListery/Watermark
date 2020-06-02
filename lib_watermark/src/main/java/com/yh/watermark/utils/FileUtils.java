@@ -22,7 +22,6 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -215,7 +214,7 @@ public class FileUtils {
      * Get a file path from a Uri. This will get the the path for Storage Access
      * Framework Documents, as well as the _data field for the MediaStore and
      * other file-based ContentProviders.
-     *
+     * <p>
      * Callers should check whether the path is local before assuming it
      * represents a local file.
      *
