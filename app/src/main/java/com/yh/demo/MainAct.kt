@@ -17,11 +17,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.yh.appinject.logger.logD
 import com.yh.appinject.logger.logE
+import com.yh.demo.databinding.ActMainBinding
 import com.yh.watermark.Watermark
 import com.yh.watermark.model.FullTextWatermark
 import com.yh.watermark.model.TextWatermark
 import com.yh.watermark.utils.FileUtils
-import kotlinx.android.synthetic.main.act_main.*
 import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.RuntimePermissions
 import java.io.File
@@ -35,6 +35,8 @@ import java.util.*
 @RuntimePermissions
 class MainAct : AppCompatActivity() {
     
+    private lateinit var binding:ActMainBinding
+    
     companion object {
         const val FILE_PROVIDER_AUTHORITY = ".provider"
         
@@ -47,21 +49,23 @@ class MainAct : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    
+        binding = ActMainBinding.inflate(layoutInflater)
         
-        setContentView(R.layout.act_main)
+        setContentView(binding.root)
         
         takePicWithPermissionCheck()
         
         //        choosePicWithPermissionCheck()
-        
-        btn.setOnClickListener {
+    
+        binding.btn.setOnClickListener {
             if(TextUtils.isEmpty(mCurrentPhotoPath)) {
                 return@setOnClickListener
             }
             
             val watermarkBitmap = Watermark.create(capturedUri!!).setOutConfigure(0.5F, Bitmap.Config.ARGB_8888).loadWatermark(FullTextWatermark("尊园地产&房星科技").setLineSpace(4).setMax(maxTextSize = 30F).setTextStyle(Color.RED, Paint.Style.FILL, R.font.medium3270).setAlpha((0xFF * 0.2).toInt()).setRotationAngle(-45F), TextWatermark("xxx部门 2020-4-22 15:15:32").setMax(maxTextSize = 20F).setTextStyle(Color.WHITE, Paint.Style.FILL, R.font.medium3270).setTextShadow(4F, 2F, 2F, Color.DKGRAY).setPadding(5, 5, 5, 5).setGravity(Gravity.TOP or Gravity.START).setAlpha((0xFF * 0.65).toInt()), TextWatermark("张麻子(15323)").setMax(maxTextSize = 20F).setTextStyle(Color.WHITE, Paint.Style.FILL, R.font.medium3270).setTextShadow(4F, 2F, 2F, Color.DKGRAY).setPadding(5, 5, 5, 5).setGravity(Gravity.BOTTOM or Gravity.END).setAlpha((0xFF * 0.65).toInt())).getWatermarkBitmap()
             if(null != watermarkBitmap) {
-                img.setImageBitmap(watermarkBitmap)
+                binding.img.setImageBitmap(watermarkBitmap)
             }
             
             //            if (null != watermarkBitmap) {
@@ -134,7 +138,7 @@ class MainAct : AppCompatActivity() {
         if(Activity.RESULT_OK == resultCode) {
             when(requestCode) {
                 REQUEST_TAKE_CAMERA_PHOTO -> {
-                    img.setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath))
+                    binding.img.setImageBitmap(BitmapFactory.decodeFile(mCurrentPhotoPath))
                     //                    btn.performClick()
                 }
                 REQUEST_OPEN_FILE         -> {
@@ -153,7 +157,7 @@ class MainAct : AppCompatActivity() {
             ?: return
         capturedUri = uri
         mCurrentPhotoPath = FileUtils.getPath(applicationContext, uri)
-        img.setImageURI(uri)
+        binding.img.setImageURI(uri)
         logD("displayImg:\n$capturedUri\n$mCurrentPhotoPath")
     }
     
