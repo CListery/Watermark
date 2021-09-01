@@ -6,7 +6,7 @@ object AppDependencies {
     
     object clistery {
         
-        const val appinject = "com.clistery.app:appinject:${AppVersion.clistery.appinject}"
+        const val appinject = "io.github.clistery:appinject:${AppVersion.clistery.appinject}"
     }
     
     object kotlin {

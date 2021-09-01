@@ -62,8 +62,24 @@ class MainAct : AppCompatActivity() {
             if(TextUtils.isEmpty(mCurrentPhotoPath)) {
                 return@setOnClickListener
             }
-            
-            val watermarkBitmap = Watermark.create(capturedUri!!).setOutConfigure(0.5F, Bitmap.Config.ARGB_8888).loadWatermark(FullTextWatermark("尊园地产&房星科技").setLineSpace(4).setMax(maxTextSize = 30F).setTextStyle(Color.RED, Paint.Style.FILL, R.font.medium3270).setAlpha((0xFF * 0.2).toInt()).setRotationAngle(-45F), TextWatermark("xxx部门 2020-4-22 15:15:32").setMax(maxTextSize = 20F).setTextStyle(Color.WHITE, Paint.Style.FILL, R.font.medium3270).setTextShadow(4F, 2F, 2F, Color.DKGRAY).setPadding(5, 5, 5, 5).setGravity(Gravity.TOP or Gravity.START).setAlpha((0xFF * 0.65).toInt()), TextWatermark("张麻子(15323)").setMax(maxTextSize = 20F).setTextStyle(Color.WHITE, Paint.Style.FILL, R.font.medium3270).setTextShadow(4F, 2F, 2F, Color.DKGRAY).setPadding(5, 5, 5, 5).setGravity(Gravity.BOTTOM or Gravity.END).setAlpha((0xFF * 0.65).toInt())).getWatermarkBitmap()
+
+            val watermarkBitmap =
+                Watermark.create(capturedUri!!).setOutConfigure(0.5F, Bitmap.Config.ARGB_8888)
+                    .loadWatermark(
+                        FullTextWatermark("尊园地产&房星科技").setLineSpace(4).setMax(maxTextSize = 30F)
+                            .setTextStyle(Color.RED, Paint.Style.FILL, R.font.medium3270)
+                            .setAlpha((0xFF * 0.2).toInt()).setRotationAngle(-45F),
+                        TextWatermark("xxx部门 2020-4-22 15:15:32").setMax(maxTextSize = 20F)
+                            .setTextStyle(Color.WHITE, Paint.Style.FILL, R.font.medium3270)
+                            .setTextShadow(4F, 2F, 2F, Color.DKGRAY).setPadding(5, 5, 5, 5)
+                            .setGravity(Gravity.TOP or Gravity.START)
+                            .setAlpha((0xFF * 0.65).toInt()),
+                        TextWatermark("张麻子(15323)").setMax(maxTextSize = 20F)
+                            .setTextStyle(Color.WHITE, Paint.Style.FILL, R.font.medium3270)
+                            .setTextShadow(4F, 2F, 2F, Color.DKGRAY).setPadding(5, 5, 5, 5)
+                            .setGravity(Gravity.BOTTOM or Gravity.END)
+                            .setAlpha((0xFF * 0.65).toInt())
+                    ).getWatermarkBitmap()
             if(null != watermarkBitmap) {
                 binding.img.setImageBitmap(watermarkBitmap)
             }
