@@ -11,7 +11,7 @@ import android.text.TextPaint
 import androidx.annotation.ColorInt
 import androidx.annotation.FontRes
 import androidx.core.content.res.ResourcesCompat
-import com.yh.appinject.logger.ext.libW
+import com.yh.appbasic.logger.ext.libW
 import com.yh.watermark.WatermarkMgr
 import kotlin.math.min
 

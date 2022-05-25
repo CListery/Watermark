@@ -7,7 +7,7 @@ import android.net.Uri
 import android.text.TextUtils
 import androidx.annotation.FloatRange
 import androidx.core.graphics.applyCanvas
-import com.yh.appinject.logger.ext.libW
+import com.yh.appbasic.logger.ext.libW
 import com.yh.watermark.model.AbsWatermark
 import java.io.BufferedInputStream
 import java.io.File

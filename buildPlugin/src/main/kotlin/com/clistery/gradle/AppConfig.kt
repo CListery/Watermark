@@ -8,6 +8,6 @@ object AppConfig {
     
     const val GROUP_ID = "com.clistery.app"
     const val ARTIFACT_ID = "watermark"
-    const val versionName = "1.2.2"
-    const val versionCode = 9
+    const val versionName = "1.2.3"
+    const val versionCode = 10
 }

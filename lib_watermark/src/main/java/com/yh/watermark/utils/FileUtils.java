@@ -30,7 +30,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
-import com.yh.appinject.logger.Logs;
+import com.yh.appbasic.logger.Logs;
 import com.yh.watermark.WatermarkMgr;
 
 import java.io.File;

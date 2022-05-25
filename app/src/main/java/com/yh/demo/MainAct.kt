@@ -15,8 +15,8 @@ import android.text.TextUtils
 import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
-import com.yh.appinject.logger.logD
-import com.yh.appinject.logger.logE
+import com.yh.appbasic.logger.logD
+import com.yh.appbasic.logger.logE
 import com.yh.demo.databinding.ActMainBinding
 import com.yh.watermark.Watermark
 import com.yh.watermark.model.FullTextWatermark

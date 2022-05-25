@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(AppDependencies.baseLibs)
     
+    implementation(AppDependencies.clistery.appbasic)
     implementation(AppDependencies.clistery.appinject)
     implementation(project(mapOf("path" to ":lib_watermark")))
     

@@ -41,6 +41,7 @@ android {
 
 dependencies {
     implementation(AppDependencies.baseLibs)
+    compileOnly(AppDependencies.clistery.appbasic)
     compileOnly(AppDependencies.clistery.appinject)
 }
 

@@ -3,8 +3,8 @@ package com.yh.demo
 import android.app.Application
 import android.util.Log
 import com.yh.appinject.IBaseAppInject
-import com.yh.appinject.logger.LogsManager
-import com.yh.appinject.logger.logW
+import com.yh.appbasic.logger.LogsManager
+import com.yh.appbasic.logger.logW
 import com.yh.watermark.WatermarkMgr
 
 /**

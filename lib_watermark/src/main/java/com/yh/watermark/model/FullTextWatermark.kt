@@ -5,7 +5,7 @@ import android.graphics.Paint
 import android.graphics.PointF
 import android.graphics.Rect
 import android.text.TextPaint
-import com.yh.appinject.logger.ext.libW
+import com.yh.appbasic.logger.ext.libW
 import com.yh.watermark.WatermarkMgr
 import kotlin.math.pow
 import kotlin.math.sqrt
