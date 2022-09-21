@@ -10,7 +10,7 @@ object AppVersion {
 
     object kotlin {
         
-        const val version = "1.5.0"
+        const val version = "1.7.10"
     }
 
     object androidx {
