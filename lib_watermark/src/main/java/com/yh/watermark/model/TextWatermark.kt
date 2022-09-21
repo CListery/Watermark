@@ -11,8 +11,9 @@ import android.text.TextPaint
 import androidx.annotation.ColorInt
 import androidx.annotation.FontRes
 import androidx.core.content.res.ResourcesCompat
-import com.yh.appbasic.logger.ext.libW
-import com.yh.watermark.WatermarkMgr
+import com.yh.appbasic.logger.logW
+import com.yh.appbasic.share.AppBasicShare
+import com.yh.watermark.WatermarkLogger
 import kotlin.math.min
 
 /**
@@ -68,7 +69,7 @@ open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>()
             paint.setShadowLayer(textShadowBlurRadius, textShadowXOffset, textShadowYOffset, textShadowColor)
         }
         if(textFount != 0) {
-            val typeface = ResourcesCompat.getFont(WatermarkMgr.get().ctx(), textFount)
+            val typeface = ResourcesCompat.getFont(AppBasicShare.context, textFount)
             if(null != typeface) {
                 paint.typeface = typeface
             }
@@ -79,14 +80,14 @@ open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>()
     override fun setupPaintStyle(paint: TextPaint, width: Int, height: Int) {
         super.setupPaintStyle(paint, width, height)
         val textSizePixel = dp2pxByDst(maxTextSize, width, height)
-        WatermarkMgr.get().libW("setupPaintStyle: $textSizePixel")
+        logW("setupPaintStyle: $textSizePixel", loggable = WatermarkLogger)
         paint.textSize = textSizePixel
     }
     
     override fun draw(watermarkCanvas: Canvas, paint: TextPaint, width: Int, height: Int) {
         val textMaxWidth = if(maxW <= 0) min(paint.measureText(text).toInt(), width)
         else maxW
-        WatermarkMgr.get().libW("make: $textMaxWidth")
+        logW("make: $textMaxWidth", loggable = WatermarkLogger)
         if(textMaxWidth <= 0) {
             return
         }
@@ -98,7 +99,7 @@ open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>()
         }
         
         val lineCount = staticLayout.lineCount
-        WatermarkMgr.get().libW("text2Bitmap: lineCount- $lineCount")
+        logW("text2Bitmap: lineCount- $lineCount", loggable = WatermarkLogger)
         if(lineCount <= 0) {
             return
         }

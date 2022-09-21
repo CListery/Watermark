@@ -31,7 +31,7 @@ import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
 import com.yh.appbasic.logger.Logs;
-import com.yh.watermark.WatermarkMgr;
+import com.yh.watermark.WatermarkLogger;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -198,7 +198,7 @@ public class FileUtils {
             cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
                     null);
             if (cursor != null && cursor.moveToFirst()) {
-                Logs.logCursor(cursor, false, null, WatermarkMgr.get());
+                Logs.logCursor(cursor, false, WatermarkLogger.INSTANCE);
 
                 final int column_index = cursor.getColumnIndexOrThrow(column);
                 return cursor.getString(column_index);
@@ -230,7 +230,7 @@ public class FileUtils {
                 ", Query: " + uri.getQuery() +
                 ", Scheme: " + uri.getScheme() +
                 ", Host: " + uri.getHost() +
-                ", Segments: " + uri.getPathSegments().toString(), null, WatermarkMgr.get());
+                ", Segments: " + uri.getPathSegments().toString(), WatermarkLogger.INSTANCE);
 
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 
@@ -372,10 +372,10 @@ public class FileUtils {
      * @author paulburke
      */
     public static Bitmap getThumbnail(Context context, Uri uri, String mimeType) {
-        Logs.logD("Attempting to get thumbnail", null, WatermarkMgr.get());
+        Logs.logD("Attempting to get thumbnail", WatermarkLogger.INSTANCE);
 
         if (!isMediaUri(uri)) {
-            Logs.logE("You can only retrieve thumbnails for images and videos.", null, WatermarkMgr.get());
+            Logs.logE("You can only retrieve thumbnails for images and videos.", null, WatermarkLogger.INSTANCE);
             return null;
         }
 
@@ -387,7 +387,7 @@ public class FileUtils {
                 cursor = resolver.query(uri, null, null, null, null);
                 if (cursor.moveToFirst()) {
                     final int id = cursor.getInt(0);
-                    Logs.logD("Got thumb ID: " + id, null, WatermarkMgr.get());
+                    Logs.logD("Got thumb ID: " + id, WatermarkLogger.INSTANCE);
 
                     if (mimeType.contains("video")) {
                         bm = MediaStore.Video.Thumbnails.getThumbnail(
@@ -404,7 +404,7 @@ public class FileUtils {
                     }
                 }
             } catch (Exception e) {
-                Logs.logE("getThumbnail", null, WatermarkMgr.get(), e);
+                Logs.logE("getThumbnail", e, WatermarkLogger.INSTANCE);
             } finally {
                 if (cursor != null)
                     cursor.close();

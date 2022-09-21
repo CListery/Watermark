@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.yh.appbasic.logger.logD
 import com.yh.appbasic.logger.logE
+import com.yh.appbasic.share.AppBasicShare
 import com.yh.demo.databinding.ActMainBinding
 import com.yh.watermark.Watermark
 import com.yh.watermark.model.FullTextWatermark
@@ -49,6 +50,8 @@ class MainAct : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        AppBasicShare.install(this)
     
         binding = ActMainBinding.inflate(layoutInflater)
         

@@ -9,7 +9,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.IntRange
 import androidx.core.graphics.withRotation
 import androidx.core.graphics.withTranslation
-import com.yh.watermark.WatermarkMgr
+import com.yh.appbasic.share.AppBasicShare
 import kotlin.math.hypot
 
 /**
@@ -73,11 +73,11 @@ abstract class AbsWatermark<P : Paint> {
     fun getGravity() = gravity
     
     protected fun dip2Pixel(dip: Float): Float {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, WatermarkMgr.get().ctx().resources.displayMetrics)
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, AppBasicShare.context.resources.displayMetrics)
     }
     
     protected fun dp2pxByDst(dp: Float, w: Int, h: Int): Float {
-        val displayMetrics = WatermarkMgr.get().ctx().resources.displayMetrics
+        val displayMetrics = AppBasicShare.context.resources.displayMetrics
         val hypot = hypot(displayMetrics.widthPixels.toDouble(), displayMetrics.heightPixels.toDouble()).toFloat()
         val bmHypot = hypot(w.toDouble(), h.toDouble()).toFloat()
         return bmHypot / hypot * dip2Pixel(dp)

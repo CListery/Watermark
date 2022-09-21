@@ -5,8 +5,8 @@ import android.graphics.Paint
 import android.graphics.PointF
 import android.graphics.Rect
 import android.text.TextPaint
-import com.yh.appbasic.logger.ext.libW
-import com.yh.watermark.WatermarkMgr
+import com.yh.appbasic.logger.logW
+import com.yh.watermark.WatermarkLogger
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -25,7 +25,7 @@ class FullTextWatermark(text: String) : TextWatermark(text) {
     override fun draw(watermarkCanvas: Canvas, paint: TextPaint, width: Int, height: Int) {
         val bounds = Rect()
         paint.getTextBounds(text, 0, text.length, bounds)
-        WatermarkMgr.get().libW("make: bounds- $bounds")
+        logW("make: bounds- $bounds", loggable = WatermarkLogger)
         
         var boundWidth = bounds.width()
         if(boundWidth <= 0) {

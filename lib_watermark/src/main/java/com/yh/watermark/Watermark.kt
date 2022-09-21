@@ -7,7 +7,8 @@ import android.net.Uri
 import android.text.TextUtils
 import androidx.annotation.FloatRange
 import androidx.core.graphics.applyCanvas
-import com.yh.appbasic.logger.ext.libW
+import com.yh.appbasic.logger.logW
+import com.yh.appbasic.share.AppBasicShare
 import com.yh.watermark.model.AbsWatermark
 import java.io.BufferedInputStream
 import java.io.File
@@ -81,7 +82,7 @@ class Watermark {
         
         val outW = (originW * outRatio).toInt()
         val outH = (originH * outRatio).toInt()
-        WatermarkMgr.get().libW("getWatermarkBitmap: [w:$outW * h:$outH]")
+        logW("getWatermarkBitmap: [w:$outW * h:$outH]", loggable = WatermarkLogger)
         
         return createWatermark(outW, outH, originW) watermarkCanvas@{
             watermarks.forEach { watermark ->
@@ -96,7 +97,7 @@ class Watermark {
         val sourceInputStream: InputStream? = when {
             null != sourcePath -> FileInputStream(File(sourcePath))
             
-            null != sourceUri  -> WatermarkMgr.get().ctx().contentResolver.openInputStream(sourceUri)
+            null != sourceUri  -> AppBasicShare.context.contentResolver.openInputStream(sourceUri)
             
             else               -> null
             
@@ -115,7 +116,7 @@ class Watermark {
         newOption.outHeight = outH
         newOption.inSampleSize = originW / outW
         newOption.inMutable = true
-        WatermarkMgr.get().libW("createWatermark: ${newOption.inSampleSize}")
+        logW("createWatermark: ${newOption.inSampleSize}", loggable = WatermarkLogger)
         
         return getSourceInputStream()?.use {
             BitmapFactory.decodeStream(it, null, newOption)?.applyCanvas(block)
