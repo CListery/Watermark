@@ -5,7 +5,7 @@ package com.clistery.gradle
 object AppVersion {
 
     object clistery{
-        const val appbasic = "2.4.1"
+        const val appbasic = "2.4.4"
     }
 
     object kotlin {

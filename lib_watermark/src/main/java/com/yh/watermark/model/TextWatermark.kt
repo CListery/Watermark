@@ -20,8 +20,10 @@ import kotlin.math.min
  * Created by CYH on 2020/4/26 13:50
  */
 open class TextWatermark(protected val text: String) : AbsWatermark<TextPaint>() {
-    
+
+    // max width
     private var maxW: Int = -1
+    // max text size
     private var maxTextSize: Float = 20F
     @ColorInt
     private var textColor = Color.BLACK

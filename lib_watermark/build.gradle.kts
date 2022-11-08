@@ -5,6 +5,6 @@ plugins {
 }
 
 dependencies {
+    api(AppDependencies.clistery.appbasic)
     AppDependencies.baseLibs.forEach { implementation(it) }
-    implementation(AppDependencies.clistery.appbasic)
 }

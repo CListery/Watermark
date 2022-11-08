@@ -21,24 +21,35 @@ import java.io.InputStream
 class Watermark {
     
     companion object {
+        /**
+         * create watermark by file path
+         */
         @JvmStatic
         fun create(sourcePath: String): Watermark {
             return Watermark(sourcePath)
         }
-        
+
+        /**
+         * create watermark by file url
+         */
         @JvmStatic
         fun create(uri: Uri): Watermark {
             return Watermark(uri)
         }
     }
-    
+
+    // file path
     private var mSourcePath: String? = null
+    // file url
     private var mSourceUri: Uri? = null
-    
+
+    // watermark layers
     private var mWatermarks = arrayListOf<AbsWatermark<*>?>()
-    
+
+    // Ratio of output watermark image to original image
     @FloatRange(from = 0.0, to = 1.0)
     private var outRatio: Float = 1F
+    // Color channel of output watermark image to original image
     private var outColorChannel: Bitmap.Config = Bitmap.Config.ARGB_8888
     
     constructor(sourcePath: String) {
@@ -48,18 +59,27 @@ class Watermark {
     constructor(uri: Uri) {
         mSourceUri = uri
     }
-    
+
+    /**
+     * config output ratio and color channel
+     */
     fun setOutConfigure(@FloatRange(from = 0.0, to = 1.0) outRatio: Float, colorChannel: Bitmap.Config): Watermark {
         this.outRatio = outRatio
         this.outColorChannel = colorChannel
         return this
     }
-    
+
+    /**
+     * load watermark layers
+     */
     fun loadWatermark(vararg watermark: AbsWatermark<*>?): Watermark {
         mWatermarks.addAll(watermark)
         return this
     }
-    
+
+    /**
+     * get watermark output bitmap
+     */
     fun getWatermarkBitmap(): Bitmap? {
         if(TextUtils.isEmpty(mSourcePath) && null == mSourceUri) {
             return null
@@ -90,7 +110,10 @@ class Watermark {
             }
         }
     }
-    
+
+    /**
+     * get input stream from original image
+     */
     private fun getSourceInputStream(): InputStream? {
         val sourcePath = mSourcePath
         val sourceUri = mSourceUri
@@ -107,7 +130,10 @@ class Watermark {
         }
         return null
     }
-    
+
+    /**
+     * create watermark output bitmap
+     */
     private fun createWatermark(outW: Int, outH: Int, originW: Int, block: Canvas.() -> Unit): Bitmap? {
         val newOption = BitmapFactory.Options()
         newOption.inJustDecodeBounds = false
@@ -122,7 +148,10 @@ class Watermark {
             BitmapFactory.decodeStream(it, null, newOption)?.applyCanvas(block)
         }
     }
-    
+
+    /**
+     * draw watermark layers
+     */
     private fun drawWatermark(watermarkCanvas: Canvas, watermark: AbsWatermark<*>, outW: Int, outH: Int) {
         val watermarkW = outW - watermark.getPaddingStart() - watermark.getPaddingEnd()
         val watermarkH = outH - watermark.getPaddingTop() - watermark.getPaddingBottom()

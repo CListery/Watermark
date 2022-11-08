@@ -16,7 +16,10 @@ import kotlin.math.sqrt
 class FullTextWatermark(text: String) : TextWatermark(text) {
     
     private var lineCount: Int = 3
-    
+
+    /**
+     * line space
+     */
     fun setLineSpace(lineCount: Int): FullTextWatermark {
         this.lineCount = lineCount
         return this

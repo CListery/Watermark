@@ -24,8 +24,8 @@ object AppDependencies {
     
     object org {
         
-        const val permissionsdispatcher = "org.permissionsdispatcher:permissionsdispatcher:4.6.0"
-        const val permissionsdispatcher_processor = "org.permissionsdispatcher:permissionsdispatcher-processor:4.6.0"
+        const val permissionsdispatcher = "com.github.permissions-dispatcher:permissionsdispatcher:4.8.0"
+        const val permissionsdispatcher_processor = "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.8.0"
     }
     
     val baseLibs: ArrayList<String>

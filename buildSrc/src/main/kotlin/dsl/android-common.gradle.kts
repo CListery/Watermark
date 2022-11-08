@@ -35,6 +35,8 @@ extensions.configure(com.android.build.api.dsl.CommonExtension::class) {
             excludes += "/META-INF/CHANGES"
             excludes += "/META-INF/README*"
             excludes += "/META-INF/NOTICE*"
+            pickFirsts += "/META-INF/INDEX*"
+            pickFirsts += "/META-INF/io.netty.versions.properties"
         }
     }
     lintOptions {
@@ -49,6 +51,9 @@ extensions.configure(com.android.build.api.dsl.CommonExtension::class) {
         xmlOutput = project.file("${project.buildDir}/reports/lint/lint-reports.xml")
         isCheckDependencies = true
         isIgnoreTestSources = true
+    }
+    sourceSets.named("main") {
+        java.srcDirs("src/main/java", "src/main/kotlin")
     }
 }
 

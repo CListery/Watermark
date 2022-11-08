@@ -69,7 +69,7 @@ class MainAct : AppCompatActivity() {
             val watermarkBitmap =
                 Watermark.create(capturedUri!!).setOutConfigure(0.5F, Bitmap.Config.ARGB_8888)
                     .loadWatermark(
-                        FullTextWatermark("尊园地产&房星科技").setLineSpace(4).setMax(maxTextSize = 30F)
+                        FullTextWatermark("CLISTERY").setLineSpace(4).setMax(maxTextSize = 30F)
                             .setTextStyle(Color.RED, Paint.Style.FILL, R.font.medium3270)
                             .setAlpha((0xFF * 0.2).toInt()).setRotationAngle(-45F),
                         TextWatermark("xxx部门 2020-4-22 15:15:32").setMax(maxTextSize = 20F)
