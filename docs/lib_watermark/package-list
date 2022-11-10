@@ -1,0 +1,76 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.yh.watermark.model////PointingToDeclaration/lib_watermark/com.yh.watermark.model/index.html
+$dokka.location:com.yh.watermark.model/AbsWatermark///PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/index.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/AbsWatermark/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/-abs-watermark.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/getGravity/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/get-gravity.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/getPaddingBottom/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/get-padding-bottom.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/getPaddingEnd/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/get-padding-end.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/getPaddingStart/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/get-padding-start.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/getPaddingTop/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/get-padding-top.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/getRotationAngle/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/get-rotation-angle.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/getX/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/get-x.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/getY/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/get-y.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/setAlpha/#kotlin.Int/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/set-alpha.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/setBgColor/#kotlin.Int/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/set-bg-color.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/setGravity/#kotlin.Int/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/set-gravity.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/setPadding/#kotlin.Int#kotlin.Int#kotlin.Int#kotlin.Int/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/set-padding.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/setRotationAngle/#kotlin.Float/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/set-rotation-angle.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/setXY/#kotlin.Float#kotlin.Float/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/set-x-y.html
+$dokka.location:com.yh.watermark.model/AbsWatermark/setup/#android.graphics.Canvas#kotlin.Int#kotlin.Int/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-abs-watermark/setup.html
+$dokka.location:com.yh.watermark.model/FullTextWatermark///PointingToDeclaration/lib_watermark/com.yh.watermark.model/-full-text-watermark/index.html
+$dokka.location:com.yh.watermark.model/FullTextWatermark/FullTextWatermark/#kotlin.String/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-full-text-watermark/-full-text-watermark.html
+$dokka.location:com.yh.watermark.model/FullTextWatermark/setLineSpace/#kotlin.Int/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-full-text-watermark/set-line-space.html
+$dokka.location:com.yh.watermark.model/TextWatermark///PointingToDeclaration/lib_watermark/com.yh.watermark.model/-text-watermark/index.html
+$dokka.location:com.yh.watermark.model/TextWatermark/TextWatermark/#kotlin.String/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-text-watermark/-text-watermark.html
+$dokka.location:com.yh.watermark.model/TextWatermark/setMax/#kotlin.Int#kotlin.Float/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-text-watermark/set-max.html
+$dokka.location:com.yh.watermark.model/TextWatermark/setTextShadow/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-text-watermark/set-text-shadow.html
+$dokka.location:com.yh.watermark.model/TextWatermark/setTextStyle/#kotlin.Int#android.graphics.Paint.Style#kotlin.Int/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-text-watermark/set-text-style.html
+$dokka.location:com.yh.watermark.model/WatermarkPosition///PointingToDeclaration/lib_watermark/com.yh.watermark.model/-watermark-position/index.html
+$dokka.location:com.yh.watermark.model/WatermarkPosition/WatermarkPosition/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-watermark-position/-watermark-position.html
+$dokka.location:com.yh.watermark.model/WatermarkPosition/positionX/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-watermark-position/position-x.html
+$dokka.location:com.yh.watermark.model/WatermarkPosition/positionY/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-watermark-position/position-y.html
+$dokka.location:com.yh.watermark.model/WatermarkPosition/rotationAngle/#/PointingToDeclaration/lib_watermark/com.yh.watermark.model/-watermark-position/rotation-angle.html
+$dokka.location:com.yh.watermark.utils////PointingToDeclaration/lib_watermark/com.yh.watermark.utils/index.html
+$dokka.location:com.yh.watermark.utils/FileUtils///PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/index.html
+$dokka.location:com.yh.watermark.utils/FileUtils/HIDDEN_PREFIX/#/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/-h-i-d-d-e-n_-p-r-e-f-i-x.html
+$dokka.location:com.yh.watermark.utils/FileUtils/MIME_TYPE_APP/#/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/-m-i-m-e_-t-y-p-e_-a-p-p.html
+$dokka.location:com.yh.watermark.utils/FileUtils/MIME_TYPE_AUDIO/#/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/-m-i-m-e_-t-y-p-e_-a-u-d-i-o.html
+$dokka.location:com.yh.watermark.utils/FileUtils/MIME_TYPE_IMAGE/#/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/-m-i-m-e_-t-y-p-e_-i-m-a-g-e.html
+$dokka.location:com.yh.watermark.utils/FileUtils/MIME_TYPE_TEXT/#/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/-m-i-m-e_-t-y-p-e_-t-e-x-t.html
+$dokka.location:com.yh.watermark.utils/FileUtils/MIME_TYPE_VIDEO/#/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/-m-i-m-e_-t-y-p-e_-v-i-d-e-o.html
+$dokka.location:com.yh.watermark.utils/FileUtils/createGetContentIntent/#/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/create-get-content-intent.html
+$dokka.location:com.yh.watermark.utils/FileUtils/getDataColumn/#android.content.Context#android.net.Uri#java.lang.String#java.lang.String[]/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/get-data-column.html
+$dokka.location:com.yh.watermark.utils/FileUtils/getExtension/#java.lang.String/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/get-extension.html
+$dokka.location:com.yh.watermark.utils/FileUtils/getFile/#android.content.Context#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/get-file.html
+$dokka.location:com.yh.watermark.utils/FileUtils/getMimeType/#android.content.Context#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/get-mime-type.html
+$dokka.location:com.yh.watermark.utils/FileUtils/getMimeType/#java.io.File/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/get-mime-type.html
+$dokka.location:com.yh.watermark.utils/FileUtils/getPath/#android.content.Context#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/get-path.html
+$dokka.location:com.yh.watermark.utils/FileUtils/getPathWithoutFilename/#java.io.File/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/get-path-without-filename.html
+$dokka.location:com.yh.watermark.utils/FileUtils/getReadableFileSize/#int/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/get-readable-file-size.html
+$dokka.location:com.yh.watermark.utils/FileUtils/getThumbnail/#android.content.Context#android.net.Uri#java.lang.String/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/get-thumbnail.html
+$dokka.location:com.yh.watermark.utils/FileUtils/getThumbnail/#android.content.Context#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/get-thumbnail.html
+$dokka.location:com.yh.watermark.utils/FileUtils/isDownloadsDocument/#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/is-downloads-document.html
+$dokka.location:com.yh.watermark.utils/FileUtils/isExternalStorageDocument/#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/is-external-storage-document.html
+$dokka.location:com.yh.watermark.utils/FileUtils/isGooglePhotosUri/#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/is-google-photos-uri.html
+$dokka.location:com.yh.watermark.utils/FileUtils/isLocal/#java.lang.String/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/is-local.html
+$dokka.location:com.yh.watermark.utils/FileUtils/isMediaDocument/#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/is-media-document.html
+$dokka.location:com.yh.watermark.utils/FileUtils/isMediaUri/#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/is-media-uri.html
+$dokka.location:com.yh.watermark.utils/FileUtils/sComparator/#/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/s-comparator.html
+$dokka.location:com.yh.watermark.utils/FileUtils/sDirFilter/#/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/s-dir-filter.html
+$dokka.location:com.yh.watermark.utils/FileUtils/sFileFilter/#/PointingToDeclaration/lib_watermark/com.yh.watermark.utils/-file-utils/s-file-filter.html
+$dokka.location:com.yh.watermark////PointingToDeclaration/lib_watermark/com.yh.watermark/index.html
+$dokka.location:com.yh.watermark/Watermark.Companion///PointingToDeclaration/lib_watermark/com.yh.watermark/-watermark/-companion/index.html
+$dokka.location:com.yh.watermark/Watermark.Companion/create/#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark/-watermark/-companion/create.html
+$dokka.location:com.yh.watermark/Watermark.Companion/create/#kotlin.String/PointingToDeclaration/lib_watermark/com.yh.watermark/-watermark/-companion/create.html
+$dokka.location:com.yh.watermark/Watermark///PointingToDeclaration/lib_watermark/com.yh.watermark/-watermark/index.html
+$dokka.location:com.yh.watermark/Watermark/Watermark/#android.net.Uri/PointingToDeclaration/lib_watermark/com.yh.watermark/-watermark/-watermark.html
+$dokka.location:com.yh.watermark/Watermark/Watermark/#kotlin.String/PointingToDeclaration/lib_watermark/com.yh.watermark/-watermark/-watermark.html
+$dokka.location:com.yh.watermark/Watermark/getWatermarkBitmap/#/PointingToDeclaration/lib_watermark/com.yh.watermark/-watermark/get-watermark-bitmap.html
+$dokka.location:com.yh.watermark/Watermark/loadWatermark/#kotlin.Array[com.yh.watermark.model.AbsWatermark[*]?]/PointingToDeclaration/lib_watermark/com.yh.watermark/-watermark/load-watermark.html
+$dokka.location:com.yh.watermark/Watermark/setOutConfigure/#kotlin.Float#android.graphics.Bitmap.Config/PointingToDeclaration/lib_watermark/com.yh.watermark/-watermark/set-out-configure.html
+$dokka.location:com.yh.watermark/WatermarkLogger///PointingToDeclaration/lib_watermark/com.yh.watermark/-watermark-logger/index.html
+com.yh.watermark
+com.yh.watermark.model
+com.yh.watermark.utils
+
