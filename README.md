@@ -10,6 +10,10 @@
 4. Support custom fonts
 5. Support custom styles
 
+## Example
+
+![img1](./doc/img1.png)
+
 ## Dependencies
 
 ### Gradle
